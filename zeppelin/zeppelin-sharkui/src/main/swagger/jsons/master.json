@@ -1,0 +1,43 @@
+{
+  "url":"spark://localhost:7077",
+  "workers":[{
+    "id":"worker-20140514180146-192.150.23.230-51726",
+    "host":"192.150.23.230",
+    "port":51726,
+    "webuiaddress":"http://192.150.23.230:8081",
+    "cores":4,
+    "coresused":1,
+    "memory":7168,
+    "memoryused":300,
+    "state":"DEAD"
+  }],
+  "cores":4,
+  "coresused":1,
+  "memory":7168,
+  "memoryused":300,
+  "activeapps":[{
+    "starttime":1400070716222,
+    "id":"app-20140514180156-0000",
+    "name":"Shark::Sigmoids-Mac-mini.local",
+    "appuiurl":"http://192.150.23.230:4040",
+    "cores":1,
+    "user":"karthik",
+    "memoryperslave":300,
+    "submitdate":"Wed May 14 18:01:56 IST 2014",
+    "state":"RUNNING",
+    "duration":76327070
+  }],
+  "completedapps":[{
+    "starttime":1400070722428,
+    "id":"app-20140514180202-0001",
+    "name":"Shark::Sigmoids-Mac-mini.local",
+    "appuiurl":"http://192.150.23.230:4041",
+    "cores":1,
+    "user":"karthik",
+    "memoryperslave":300,
+    "submitdate":"Wed May 14 18:02:02 IST 2014",
+    "state":"FINISHED",
+    "duration":15047
+  }],
+  "status":"ALIVE"
+}

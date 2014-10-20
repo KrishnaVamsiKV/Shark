@@ -1,0 +1,34 @@
+<div class="span2"></div>
+<div class="span12">
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+    <li ><a href="#/stages" data-toggle="tab">Queries</a></li>
+    <li><a href="#/storage" data-toggle="tab">Storage</a></li>
+    <li><a href="#/workers" data-toggle="tab">Workers</a></li>
+    <li class="active"><a href="#/errors" data-toggle="tab">Performance Tips</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="environment">
+    <ul class="nav nav-tabs">
+     <li><a href="#/errors"> Errors </a></li>
+  <li class="active">
+    <a href="#/workerstatus">Worker Status</a>
+  </li>
+  <li><a href="#/shuffle">High Shuffle Alerts</a></li>
+  <li><a href="#/overtime">Overtime Alerts</a></li>
+ 
+</ul>
+    <b> Worker Status : </b>
+    <ul>
+      <li ng-repeat = "worker in checkworkers(workers) | filter:query" >
+        <b> Worker : </b><span ng-click ="updateid(stage[0].jobid)"><a href="#/workers">{{worker[0].id}}</a></span> is <b> DEAD </b> 
+      </li>
+    </ul>
+    
+
+    </div>
+    
+    
+  </div>
+</div>
+</div>

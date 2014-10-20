@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+ <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Shark</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/bootstrap/js/bootstrap.min.js"/>
+  
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src = "bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top" height = "100px" style = "bottom-padding:100px"> 
+				<div class="navbar navbar-inner"> 
+					<div class="span1"></div>
+					
+					
+					<ul class="nav navbar-nav">
+
+						<li><img src = "img/sigmoid-logo.png"/></li>
+						<div class="span0.5"></div>
+						<li id="zeppelin"></li>
+
+
+						
+						
+						
+						<li><a href="#/job">Job Browser</a></li>
+						
+					</ul>
+				</div>
+</div>
+
+  <div class="row-fluid">
+			<div class="span12"></div></div>
+			<div class="row-fluid">
+			<div class="span12"></div></div>
+			<div class="row-fluid">
+			<div class="span12"> </div></div>
+			<div class="row-fluid">
+			<div class="span8"></div>Search for <input type="text" ng-model="query"></div>
+			<div class="row-fluid">
+			<div class="span12"></div></div>
+
+  
+
+  <div ng-view></div>
+
+   <script type="text/javascript">
+  	    document.getElementById("zeppelin").innerHTML = '<a href="http://'+window.location.hostname+':5050/#/zql">Query</a>';
+  </script>
+ 
+
+ 
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+ 
+</body>
+</html>

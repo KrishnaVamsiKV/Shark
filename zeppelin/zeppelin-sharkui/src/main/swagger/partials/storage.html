@@ -1,0 +1,37 @@
+<div class="span14">
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+    <li ><a href="#/stages" data-toggle="tab">Queries</a></li>
+    <li class="active"><a href="#/storage" data-toggle="tab">Storage</a></li>
+    <li><a href="#/workers" data-toggle="tab">Workers</a></li>
+    <li><a href="#/executers" data-toggle="tab">Executors</a></li>
+    <li ><a href="#/errors" data-toggle="tab">Performance  <span ng-if = "(checkshuffleover(completedstages))||(checkshuffleover(failedstages))||(checkshuffleover(activestages))||(timeover(activestages))||(timeover(completedstages))||(timeover(failedstages))" class="badge">{{checkworkers(workers).length+checkshuffleover(activestages).length+checkshuffleover(completedstages).length+checkshuffleover(failedstages).length+timeover(activestages).length+timeover(completedstages).length+timeover(failedstages).length}}</span></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="storage">
+     <table class="table table-hover">
+        <thead>
+          <th> <a href="#/storage" ng-click = "order='name';reverse=!reverse">RDD </a></th>
+          <th> <a href="#/storage" ng-click = "order='storageLevel';reverse=!reverse">Storage Level </a></th>
+          <th> <a href="#/storage" ng-click = "order='numCachedPartitions';reverse=!reverse">Cached Partitions </a></th>
+          <th> <a href="#/storage" ng-click = "order='';reverse=!reverse">Fraction Cached </a></th>
+          <th> <a href="#/storage" ng-click = "order='memSize';reverse=!reverse">Size in Memory </a></th>
+          <th> <a href="#/storage" ng-click = "order='diskSize';reverse=!reverse">Size on Disk </a></th>
+        </thead>    
+        <tbody>
+          <tr ng-repeat = "rdd in storageInfo | filter:query|orderBy:order:!reverse">
+          <td>{{rdd.name}}</td>  
+          <td>{{rdd.storageLevel}}</td>
+          <td>{{rdd.numCachedPartitions}}</td>
+          <td>{{getval(rdd.numCachedPartitions,rdd.numPartitions)}}</td>
+          <td>{{rdd.memSize}}</td>
+          <td>{{rdd.diskSize}}</td>          
+          </tr>
+        </tbody>    
+      </table>
+    </div>
+    
+    
+  </div>
+</div>
+</div>

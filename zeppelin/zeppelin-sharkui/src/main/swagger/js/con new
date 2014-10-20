@@ -1,0 +1,357 @@
+f'use strict';
+
+/* Controllers */
+
+var sharkcontrollers = angular.module('myApp.controllers', []);
+  
+sharkcontrollers.controller('QueryCtrl', ['$scope', function($scope) {
+
+  }]);
+sharkcontrollers.controller('MonitoringCtrl', ['$scope', function($scope) {
+
+  }]);
+sharkcontrollers.controller('ModellingCtrl', ['$scope', function($scope) {
+
+  }]);
+sharkcontrollers.controller('JobCtrl', ['$scope', function($scope) {
+
+ 
+  }]);
+
+sharkcontrollers.controller('StagesCtrl',function($scope,$http) {
+
+
+
+/*$http({method: 'GET','http://192.150.23.230:4040/stages/json/'}).success(function(data) {
+    $scope.stage = data;
+    $scope.activestages = data.activeStages;
+    $scope.completedstages = data.completedStages;
+    $scope.failedstages = data.failedStages;
+     });*/
+    
+    /*$http({method: 'GET', url: 'http://192.150.23.230:4040/stages/json/'}).*/
+    $http.get('jsons/stages.json').
+    success(function(data, status, headers, config) {
+    $scope.stage = data;
+    $scope.activestages = data.activeStages;
+    $scope.completedstages = data.completedStages;
+    $scope.failedstages = data.failedStages;
+    $scope.stagesnew = group(data);
+    $scope.activestages = $scope.stagesnew.activestages;
+    $scope.completedstages = $scope.stagesnew.completedstages;
+    $scope.failedstages = $scope.stagesnew.failedstages;
+    
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+
+    function group(value){
+        var groups = {failedstages:{},activestages:{},completedstages:{}};
+
+for(var i = 0; i < value.failedStages.length; i++) {
+    var item = value.failedStages[i];
+
+     if(!groups.failedstages[item.jobid]) {
+        groups.failedstages[item.jobid] = [];
+        groups.failedstages[item.jobid].push({
+            jobid : item.jobid,
+            description : item.description,
+            completedTasks : item.completedTasks,
+            startedTasks : item.startedTasks,
+            failedTasks : item.failedTasks,
+            numTasks : item.numTasks,
+            submissiontime : item.submissiontime,
+            completiontime : item.completiontime,
+            shuffleRead : item.shuffleRead,
+            shuffleWrite : item.shuffleWrite
+        })
+    }
+
+    else{
+        groups.failedstages[item.jobid][0].completedTasks = groups.failedstages[item.jobid][0].completedTasks + item.completedTasks;
+        groups.failedstages[item.jobid][0].startedTasks = groups.failedstages[item.jobid][0].startedTasks + item.startedTasks;
+        groups.failedstages[item.jobid][0].failedTasks = groups.failedstages[item.jobid][0].failedTasks + item.failedTasks;
+        groups.failedstages[item.jobid][0].numTasks = groups.failedstages[item.jobid][0].numTasks + item.numTasks;
+        groups.failedstages[item.jobid][0].shuffleRead = groups.failedstages[item.jobid][0].shuffleRead + item.shuffleRead;
+        groups.failedstages[item.jobid][0].shuffleWrite = groups.failedstages[item.jobid][0].shuffleWrite + item.shuffleWrite;
+        if(groups.failedstages[item.jobid][0].submissiontime>item.submissiontime  ){
+            groups.failedstages[item.jobid][0].submissiontime = item.submissiontime;
+        }
+        
+        if(groups.failedstages[item.jobid][0].completiontime<item.completiontime ){
+            groups.failedstages[item.jobid][0].completiontime = item.completiontime;
+        }
+        
+    }
+
+    
+}
+
+
+    for(var i = 0; i < value.activeStages.length; i++) {
+    var item = value.activeStages[i];
+
+    if(groups.failedstages[item.jobid]){
+        groups.failedstages[item.jobid][0].completedTasks = groups.failedstages[item.jobid][0].completedTasks + item.completedTasks;
+        groups.failedstages[item.jobid][0].startedTasks = groups.failedstages[item.jobid][0].startedTasks + item.startedTasks;
+        groups.failedstages[item.jobid][0].failedTasks = groups.failedstages[item.jobid][0].failedTasks + item.failedTasks;
+        groups.failedstages[item.jobid][0].numTasks = groups.failedstages[item.jobid][0].numTasks + item.numTasks;
+        groups.failedstages[item.jobid][0].shuffleRead = groups.failedstages[item.jobid][0].shuffleRead + item.shuffleRead;
+        groups.failedstages[item.jobid][0].shuffleWrite = groups.failedstages[item.jobid][0].shuffleWrite + item.shuffleWrite;
+        if(groups.failedstages[item.jobid][0].submissiontime>item.submissiontime  ){
+            groups.failedstages[item.jobid][0].submissiontime = item.submissiontime;
+        }
+        
+        if(groups.failedstages[item.jobid][0].completiontime<item.completiontime ){
+            groups.failedstages[item.jobid][0].completiontime = item.completiontime;
+        }
+    }
+
+    else{
+
+     if(!groups.activestages[item.jobid]) {
+        groups.activestages[item.jobid] = [];
+        groups.activestages[item.jobid].push({
+            jobid : item.jobid,
+            description : item.description,
+            completedTasks : item.completedTasks,
+            startedTasks : item.startedTasks,
+            failedTasks : item.failedTasks,
+            numTasks : item.numTasks,
+            submissiontime : item.submissiontime,
+            completiontime : item.completiontime,
+            shuffleRead : item.shuffleRead,
+            shuffleWrite : item.shuffleWrite
+        })
+    }
+
+    else{
+        groups.activestages[item.jobid][0].completedTasks = groups.activestages[item.jobid][0].completedTasks + item.completedTasks;
+        groups.activestages[item.jobid][0].startedTasks = groups.activestages[item.jobid][0].startedTasks + item.startedTasks;
+        groups.activestages[item.jobid][0].failedTasks = groups.activestages[item.jobid][0].failedTasks + item.failedTasks;
+        groups.activestages[item.jobid][0].numTasks = groups.activestages[item.jobid][0].numTasks + item.numTasks;
+        groups.activestages[item.jobid][0].shuffleRead = groups.activestages[item.jobid][0].shuffleRead + item.shuffleRead;
+        groups.activestages[item.jobid][0].shuffleWrite = groups.activestages[item.jobid][0].shuffleWrite + item.shuffleWrite;
+        if(groups.activestages[item.jobid][0].submissiontime>item.submissiontime  ){
+            groups.activestages[item.jobid][0].submissiontime = item.submissiontime;
+        }
+        
+        if(groups.activestages[item.jobid][0].completiontime<item.completiontime ){
+            groups.activestages[item.jobid][0].completiontime = item.completiontime;
+        }
+        
+    }
+
+    
+}
+
+}
+
+    for(var i = 0; i < value.completedStages.length; i++){
+    
+    var item = value.completedStages[i];
+
+    if(groups.failedstages[item.jobid]){
+        groups.failedstages[item.jobid][0].completedTasks = groups.failedstages[item.jobid][0].completedTasks + item.completedTasks;
+        groups.failedstages[item.jobid][0].startedTasks = groups.failedstages[item.jobid][0].startedTasks + item.startedTasks;
+        groups.failedstages[item.jobid][0].failedTasks = groups.failedstages[item.jobid][0].failedTasks + item.failedTasks;
+        groups.failedstages[item.jobid][0].numTasks = groups.failedstages[item.jobid][0].numTasks + item.numTasks;
+        groups.failedstages[item.jobid][0].shuffleRead = groups.failedstages[item.jobid][0].shuffleRead + item.shuffleRead;
+        groups.failedstages[item.jobid][0].shuffleWrite = groups.failedstages[item.jobid][0].shuffleWrite + item.shuffleWrite;
+        if(groups.failedstages[item.jobid][0].submissiontime>item.submissiontime  ){
+            groups.failedstages[item.jobid][0].submissiontime = item.submissiontime;
+        }
+        
+        if(groups.failedstages[item.jobid][0].completiontime<item.completiontime ){
+            groups.failedstages[item.jobid][0].completiontime = item.completiontime;
+        }
+    }
+
+    else{
+        if(groups.activestages[item.jobid]){
+        groups.activestages[item.jobid][0].completedTasks = groups.activestages[item.jobid][0].completedTasks + item.completedTasks;
+        groups.activestages[item.jobid][0].startedTasks = groups.activestages[item.jobid][0].startedTasks + item.startedTasks;
+        groups.activestages[item.jobid][0].failedTasks = groups.activestages[item.jobid][0].failedTasks + item.failedTasks;
+        groups.activestages[item.jobid][0].numTasks = groups.activestages[item.jobid][0].numTasks + item.numTasks;
+        groups.activestages[item.jobid][0].shuffleRead = groups.activestages[item.jobid][0].shuffleRead + item.shuffleRead;
+        groups.activestages[item.jobid][0].shuffleWrite = groups.activestages[item.jobid][0].shuffleWrite + item.shuffleWrite;
+        if(groups.activestages[item.jobid][0].submissiontime>item.submissiontime  ){
+            groups.activestages[item.jobid][0].submissiontime = item.submissiontime;
+        }
+        
+        if(groups.activestages[item.jobid][0].completiontime<item.completiontime ){
+            groups.activestages[item.jobid][0].completiontime = item.completiontime;
+        }
+    }
+
+    else{
+
+     if(!groups.completedstages[item.jobid]) {
+        groups.completedstages[item.jobid] = [];
+        groups.completedstages[item.jobid].push({
+            jobid : item.jobid,
+            description : item.description,
+            completedTasks : item.completedTasks,
+            startedTasks : item.startedTasks,
+            failedTasks : item.failedTasks,
+            numTasks : item.numTasks,
+            submissiontime : item.submissiontime,
+            completiontime : item.completiontime,
+            shuffleRead : item.shuffleRead,
+            shuffleWrite : item.shuffleWrite
+        })
+    }
+
+    else{
+        groups.completedstages[item.jobid][0].completedTasks = groups.completedstages[item.jobid][0].completedTasks + item.completedTasks;
+        groups.completedstages[item.jobid][0].startedTasks = groups.completedstages[item.jobid][0].startedTasks + item.startedTasks;
+        groups.completedstages[item.jobid][0].failedTasks = groups.completedstages[item.jobid][0].failedTasks + item.failedTasks;
+        groups.completedstages[item.jobid][0].numTasks = groups.completedstages[item.jobid][0].numTasks + item.numTasks;
+        groups.completedstages[item.jobid][0].shuffleRead = groups.completedstages[item.jobid][0].shuffleRead + item.shuffleRead;
+        groups.completedstages[item.jobid][0].shuffleWrite = groups.completedstages[item.jobid][0].shuffleWrite + item.shuffleWrite;
+        if(groups.completedstages[item.jobid][0].submissiontime>item.submissiontime  ){
+            groups.completedstages[item.jobid][0].submissiontime = item.submissiontime;
+        }
+        
+        if(groups.completedstages[item.jobid][0].completiontime<item.completiontime ){
+            groups.completedstages[item.jobid][0].completiontime = item.completiontime;
+        }
+        
+    }
+
+    
+}
+
+}
+
+}
+
+
+
+
+
+
+
+
+var result = {failedstages:[],activestages:[],completedstages:[]};
+
+for(var x in groups.failedstages) {
+    if(groups.failedstages.hasOwnProperty(x)) {
+        
+        result.failedstages.push(groups[x]);
+    }
+}
+
+for(var x in groups.activestages) {
+    if(groups.activestages.hasOwnProperty(x)) {
+        
+        result.activestages.push(groups[x]);
+    }
+}
+
+for(var x in groups.completedstages) {
+    if(groups.completedstages.hasOwnProperty(x)) {
+        
+        result.completedstages.push(groups[x]);
+    }
+}
+
+return result ;
+    }
+
+    function group1(value){
+        var i;
+        var jobs = 0;
+        var jobids = [];
+        for(i=0;i<value.length;i++){
+            if(value[i].jobid in jobids){
+                alert(value[i].jobid);
+            }
+            else{
+                alert(value[i].jobid);
+                jobids.push(value[i].jobid);
+            }           
+            
+        }
+        return jobids;
+    }
+
+    
+    $scope.timeconv = function(value){
+        var d = new Date(value);
+        var formattedDate = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+        var hours = (d.getHours() < 10) ? "0" + d.getHours() : d.getHours();
+        var minutes = (d.getMinutes() < 10) ? "0" + d.getMinutes() : d.getMinutes();
+        var seconds = (d.getSeconds() < 10) ? "0" + d.getSeconds() : d.getSeconds();
+        var formattedTime = hours + ":" + minutes + ":" + seconds;
+
+        formattedDate = formattedDate + " " + formattedTime;
+        return formattedDate;
+    } 
+
+    $scope.appendit = function(ind,tag){
+        return 'stage.'+ String.fromCharCode(ind + 48) +'[0].'+ tag;
+    }
+
+    $scope.gettimediff = function(value1,value2){
+        var value1 = new Date(value1);
+        var value2 = new Date(value2);
+        var difference = value1.getTime() - value2.getTime();
+        var secondsDifference = Math.floor(difference/1000);
+        var formattedDiff = secondsDifference + " Secs";
+        return formattedDiff;
+    }
+
+    
+
+    function getind(value){
+        var i;
+        for(i=0;i<jobs.length;i++){
+            if(value==jobs[i].jobid){
+                break;
+            }
+        }
+        return i;
+    }
+
+    $scope.group1 = function(value){
+        var i;
+        var jobs = 0;
+        var jobids = [];
+        for(i=0;i<value.length;i++){
+        
+
+            
+            jobs = jobs + value[i].numTasks;
+        }
+        return jobs;
+    }
+    
+    
+    
+  });
+
+  
+
+
+
+
+
+sharkcontrollers.controller('StorageCtrl', ['$scope', function($scope) {
+
+  }]);
+sharkcontrollers.controller('EnvironmentCtrl', ['$scope', function($scope) {
+
+  }]);
+sharkcontrollers.controller('ExecutorsCtrl', ['$scope', function($scope) {
+
+  }]);
+
+
+
+
+
+
+
