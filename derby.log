@@ -1,0 +1,6 @@
+----------------------------------------------------------------
+2014-06-16 08:28:21.789 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance a816c00e-0146-a3ca-9448-000031a905d8
+on database directory /home/kv/shark_sg-0.9.1-bin-hadoop2-cdh4.2.0/metastore_db  
+
+Database Class Loader started - derby.database.classpath=''
