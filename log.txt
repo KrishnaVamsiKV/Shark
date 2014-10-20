@@ -1,0 +1,176 @@
+10000
+Starting the Shark Server
+14/05/02 11:08:43 INFO slf4j.Slf4jLogger: Slf4jLogger started
+14/05/02 11:08:43 INFO Remoting: Starting remoting
+14/05/02 11:08:43 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://spark@ip-172-31-13-126.us-west-1.compute.internal:51485]
+14/05/02 11:08:43 INFO Remoting: Remoting now listens on addresses: [akka.tcp://spark@ip-172-31-13-126.us-west-1.compute.internal:51485]
+14/05/02 11:08:43 INFO spark.SparkEnv: Registering BlockManagerMaster
+14/05/02 11:08:43 INFO storage.DiskBlockManager: Created local directory at /tmp/spark-local-20140502110843-2765
+14/05/02 11:08:43 INFO storage.MemoryStore: MemoryStore started with capacity 593.9 MB.
+14/05/02 11:08:43 INFO network.ConnectionManager: Bound socket to port 42447 with id = ConnectionManagerId(ip-172-31-13-126.us-west-1.compute.internal,42447)
+14/05/02 11:08:43 INFO storage.BlockManagerMaster: Trying to register BlockManager
+14/05/02 11:08:43 INFO storage.BlockManagerMasterActor$BlockManagerInfo: Registering block manager ip-172-31-13-126.us-west-1.compute.internal:42447 with 593.9 MB RAM
+14/05/02 11:08:43 INFO storage.BlockManagerMaster: Registered BlockManager
+14/05/02 11:08:43 INFO spark.HttpServer: Starting HTTP Server
+14/05/02 11:08:43 INFO server.Server: jetty-7.6.8.v20121106
+14/05/02 11:08:44 INFO server.AbstractConnector: Started SocketConnector@0.0.0.0:38176
+14/05/02 11:08:44 INFO broadcast.HttpBroadcast: Broadcast server started at http://172.31.13.126:38176
+14/05/02 11:08:44 INFO spark.SparkEnv: Registering MapOutputTracker
+14/05/02 11:08:44 INFO spark.HttpFileServer: HTTP File server directory is /tmp/spark-4bfa082e-1d6b-4e20-b89d-4f288ef6ca08
+14/05/02 11:08:44 INFO spark.HttpServer: Starting HTTP Server
+14/05/02 11:08:44 INFO server.Server: jetty-7.6.8.v20121106
+14/05/02 11:08:44 INFO server.AbstractConnector: Started SocketConnector@0.0.0.0:50032
+14/05/02 11:08:44 INFO server.Server: jetty-7.6.8.v20121106
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/storage/rdd,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/storage,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/stages/stage,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/stages/pool,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/stages,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/environment,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/executors,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/metrics/json,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/static,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/,null}
+14/05/02 11:08:44 WARN component.AbstractLifeCycle: FAILED SelectChannelConnector@0.0.0.0:4040: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.open(SelectChannelConnector.java:187)
+	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:316)
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.doStart(SelectChannelConnector.java:265)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:286)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64)
+	at org.apache.spark.ui.JettyUtils$$anonfun$1.apply$mcV$sp(JettyUtils.scala:118)
+	at org.apache.spark.ui.JettyUtils$$anonfun$1.apply(JettyUtils.scala:118)
+	at org.apache.spark.ui.JettyUtils$$anonfun$1.apply(JettyUtils.scala:118)
+	at scala.util.Try$.apply(Try.scala:161)
+	at org.apache.spark.ui.JettyUtils$.connect$1(JettyUtils.scala:118)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:129)
+	at org.apache.spark.ui.SparkUI.bind(SparkUI.scala:57)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:159)
+	at shark.SharkContext.<init>(SharkContext.scala:42)
+	at shark.SharkContext.<init>(SharkContext.scala:61)
+	at shark.SharkEnv$.initWithSharkContext(SharkEnv.scala:78)
+	at shark.SharkEnv$.init(SharkEnv.scala:38)
+	at shark.SharkServer$.<init>(SharkServer.scala:68)
+	at shark.SharkServer$.<clinit>(SharkServer.scala)
+	at shark.SharkServer.main(SharkServer.scala)
+14/05/02 11:08:44 WARN component.AbstractLifeCycle: FAILED org.eclipse.jetty.server.Server@6520496c: java.net.BindException: Address already in use
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:444)
+	at sun.nio.ch.Net.bind(Net.java:436)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.open(SelectChannelConnector.java:187)
+	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:316)
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.doStart(SelectChannelConnector.java:265)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:286)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64)
+	at org.apache.spark.ui.JettyUtils$$anonfun$1.apply$mcV$sp(JettyUtils.scala:118)
+	at org.apache.spark.ui.JettyUtils$$anonfun$1.apply(JettyUtils.scala:118)
+	at org.apache.spark.ui.JettyUtils$$anonfun$1.apply(JettyUtils.scala:118)
+	at scala.util.Try$.apply(Try.scala:161)
+	at org.apache.spark.ui.JettyUtils$.connect$1(JettyUtils.scala:118)
+	at org.apache.spark.ui.JettyUtils$.startJettyServer(JettyUtils.scala:129)
+	at org.apache.spark.ui.SparkUI.bind(SparkUI.scala:57)
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:159)
+	at shark.SharkContext.<init>(SharkContext.scala:42)
+	at shark.SharkContext.<init>(SharkContext.scala:61)
+	at shark.SharkEnv$.initWithSharkContext(SharkEnv.scala:78)
+	at shark.SharkEnv$.init(SharkEnv.scala:38)
+	at shark.SharkServer$.<init>(SharkServer.scala:68)
+	at shark.SharkServer$.<clinit>(SharkServer.scala)
+	at shark.SharkServer.main(SharkServer.scala)
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/static,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/metrics/json,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/executors,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/environment,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/stages,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/stages/pool,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/stages/stage,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/storage,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: stopped o.e.j.s.h.ContextHandler{/storage/rdd,null}
+14/05/02 11:08:44 INFO ui.JettyUtils: Failed to create UI at port, 4040. Trying again.
+14/05/02 11:08:44 INFO ui.JettyUtils: Error was: Failure(java.net.BindException: Address already in use)
+14/05/02 11:08:44 INFO server.Server: jetty-7.6.8.v20121106
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/storage/rdd,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/storage,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/stages/stage,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/stages/pool,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/stages,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/environment,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/executors,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/metrics/json,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/static,null}
+14/05/02 11:08:44 INFO handler.ContextHandler: started o.e.j.s.h.ContextHandler{/,null}
+14/05/02 11:08:44 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:4041
+14/05/02 11:08:44 INFO ui.SparkUI: Started Spark Web UI at http://ip-172-31-13-126.us-west-1.compute.internal:4041
+14/05/02 11:08:44 INFO client.AppClient$ClientActor: Connecting to master spark://localhost:7077...
+14/05/02 11:08:45 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Connected to Spark cluster with app ID app-20140502110845-0005
+This usage has been deprecated, consider using the new command line syntax (run with -h to see usage information)
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/0 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/0 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/0 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/0 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/0"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/0 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/0"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/1 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/1 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/1 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/1 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/1"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/1 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/1"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/2 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/2 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/2 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/2 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/2"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/2 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/2"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/3 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/3 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/3 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/3 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/3"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/3 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/3"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/4 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/4 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/4 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/4 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/4"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/4 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/4"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/5 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/5 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/5 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/5 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/5"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/5 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/5"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/6 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/6 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/6 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/6 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/6"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/6 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/6"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/7 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/7 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/7 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/7 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/7"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/7 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/7"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/8 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/8 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/8 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/8 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/8"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/8 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/8"): error=2, No such file or directory
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor added: app-20140502110845-0005/9 on worker-20140502083024-ip-172-31-13-126.us-west-1.compute.internal-35210 (ip-172-31-13-126.us-west-1.compute.internal:35210) with 1 cores
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Granted executor ID app-20140502110845-0005/9 on hostPort ip-172-31-13-126.us-west-1.compute.internal:35210 with 1 cores, 512.0 MB RAM
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/9 is now RUNNING
+14/05/02 11:08:46 INFO client.AppClient$ClientActor: Executor updated: app-20140502110845-0005/9 is now FAILED (class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/9"): error=2, No such file or directory)
+14/05/02 11:08:46 INFO cluster.SparkDeploySchedulerBackend: Executor app-20140502110845-0005/9 removed: class java.io.IOException: Cannot run program "/bin/java" (in directory "/home/ubuntu/spark/work/app-20140502110845-0005/9"): error=2, No such file or directory
+14/05/02 11:08:46 ERROR client.AppClient$ClientActor: Master removed our application: FAILED; stopping client
+14/05/02 11:08:46 WARN cluster.SparkDeploySchedulerBackend: Disconnected from Spark cluster! Waiting for reconnection...
+Exception in thread "main" org.apache.thrift.transport.TTransportException: Could not create ServerSocket on address 0.0.0.0/0.0.0.0:10000.
+	at org.apache.thrift.transport.TServerSocket.<init>(TServerSocket.java:93)
+	at org.apache.thrift.transport.TServerSocket.<init>(TServerSocket.java:75)
+	at org.apache.thrift.transport.TServerSocket.<init>(TServerSocket.java:68)
+	at shark.SharkServer$.main(SharkServer.scala:92)
+	at shark.SharkServer.main(SharkServer.scala)

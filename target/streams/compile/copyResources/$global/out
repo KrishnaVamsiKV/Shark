@@ -1,0 +1,9 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/tablerdd,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/tablerdd)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/dashboard,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/dashboard)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/tablerdd/SharkContext_sqlRdd_generator.py,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/tablerdd/SharkContext_sqlRdd_generator.py)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/tablerdd/rddtable_generator.py,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/tablerdd/rddtable_generator.py)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/tablerdd/TableRDDGenerated_generator.py,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/tablerdd/TableRDDGenerated_generator.py)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/tablerdd/generator_utils.py,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/tablerdd/generator_utils.py)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/dashboard/dashboard.css,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/dashboard/dashboard.css)[0m
+[0m[[0mdebug[0m] [0m	(/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/src/main/resources/dashboard/README,/home/ubuntu/shark-0.9.1-bin-hadoop2-cdh4.2.0/target/scala-2.10/classes/dashboard/README)[0m
