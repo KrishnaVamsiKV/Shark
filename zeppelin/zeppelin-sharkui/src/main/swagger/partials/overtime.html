@@ -1,0 +1,43 @@
+<div class="span14">
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+    <li ><a href="#/stages" data-toggle="tab">Queries</a></li>
+    <li><a href="#/storage" data-toggle="tab">Storage</a></li>
+    <li><a href="#/workers" data-toggle="tab">Workers</a></li>
+    <li><a href="#/executers" data-toggle="tab">Executors</a></li>
+    <li class="active"><a href="#/errors" data-toggle="tab">Performance  <span ng-if = "(checkshuffleover(completedstages))||(checkshuffleover(failedstages))||(checkshuffleover(activestages))||(timeover(activestages))||(timeover(completedstages))||(timeover(failedstages))" class="badge">{{checkworkers(workers).length+checkshuffleover(activestages).length+checkshuffleover(completedstages).length+checkshuffleover(failedstages).length+timeover(activestages).length+timeover(completedstages).length+timeover(failedstages).length}}</span></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="environment">
+
+    <ul  class="nav nav-tabs">
+    <li ><a href="#/errors"> Errors </a></li>
+    <li ><a href="#/cached"> Cached Data <span ng-if="(checkrdd(storageInfo))" class="badge">{{checkrdd(storageInfo).length}}</span> </a></li>
+  <li > 
+    <a href="#/workerstatus">Worker Status <span ng-if="(checkworkers(workers))" class="badge">{{checkworkers(workers).length}}</span></a>
+  </li>
+  <li><a href="#/shuffle">High Shuffle Alerts <span ng-if = "(checkshuffleover(completedstages))||(checkshuffleover(failedstages))||(checkshuffleover(activestages))" class="badge">{{checkshuffleover(activestages).length+checkshuffleover(completedstages).length+checkshuffleover(failedstages).length}}</span></a></li>
+  <li class="active"><a href="#/overtime">Overtime Alerts <span ng-if = "((timeover(activestages))||(timeover(completedstages))||(timeover(failedstages)))" class="badge">{{timeover(activestages).length+timeover(completedstages).length+timeover(failedstages).length}}</span></a></li>
+   
+</ul>
+   
+
+      <b> Time OverFlow : </b>
+        <ul>
+        <li  ng-repeat="stage in timeover(activestages) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} has been running for <b>{{gettimediff(stage.completiontime,stage.submissiontime)}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li  ng-repeat="stage in timeover(completedstages) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} has been running for <b>{{gettimediff(stage.completiontime,stage.submissiontime)}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li  ng-repeat="stage in timeover(failedstages) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} has been running for <b>{{gettimediff(stage.completiontime,stage.submissiontime)}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        </ul>
+
+    </div>
+    
+    
+  </div>
+</div>
+</div>

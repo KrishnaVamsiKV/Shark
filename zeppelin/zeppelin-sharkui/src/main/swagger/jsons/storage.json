@@ -1,0 +1,11 @@
+{
+  "storageInfo":[{
+    "name":"src_cached",
+    "storageLevel":"Memory Deserialized 1x Replicated",
+    "numCachedPartitions":3,
+    "numPartitions":3,
+    "memSize":"22.7 KB",
+    "diskSize":"0.0 B"
+  }],
+  "meta":"Storage Info"
+}

@@ -1,0 +1,103 @@
+<body><div class="span14">
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#/stages" data-toggle="tab">Queries</a></li>
+    <li><a href="#/storage" data-toggle="tab">Storage</a></li>
+    <li><a href="#/workers" data-toggle="tab">Workers</a></li>
+    <li><a href="#/executers" data-toggle="tab">Executors</a></li>
+    <li ><a href="#/errors" data-toggle="tab">Performance  <span ng-if = "(checkshuffleover(completedstages))||(checkshuffleover(failedstages))||(checkshuffleover(activestages))||(timeover(activestages))||(timeover(completedstages))||(timeover(failedstages))" class="badge">{{checkworkers(workers).length+checkshuffleover(activestages).length+checkshuffleover(completedstages).length+checkshuffleover(failedstages).length+timeover(activestages).length+timeover(completedstages).length+timeover(failedstages).length}}</span></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="stages">
+    <ul class="nav nav-tabs">
+  <li>
+    <a href="#/stage">Queries <span ng-if="(stagesnew)" class="badge">{{stagesnew.length}}</span></a>
+  </li>
+  <li class="active"><a href="#/jobs">Stages <span ng-if="(getonly(stage,id))" class="badge">{{getonly(stage,id).length}}</span></a></li>
+  <li><a href="#/querystructure">Query Structure</a></li>
+  
+</ul>
+          
+         
+        
+          
+         
+         <b>Job Id : {{id}}  Details</b>
+         
+           <table class="table table-striped">
+           <thead>
+    <th> <a href="#/jobs" ng-click = "order='stageid';reverse=!reverse" align= "center"> Id </a></th>
+    <th align= "center"> <a href="#/jobs" ng-click = "order='name';reverse=!reverse" align= "center">Description</a></th>
+    <th align= "center"> <a href="#/jobs" ng-click = "order='numTasks';reverse=!reverse" align= "center"> Tasks </a></th>
+    <th align= "center"> <a href="#/jobs" ng-click = "order='';reverse=!reverse" align= "center">Status</a> </th>
+    <th align= "center"> <a href="#/jobs" ng-click = "order='submissiontime';reverse=!reverse" align= "center">Submitted Time</a></th>
+    <th align= "center"><a href="#/jobs" ng-click = "order='duration';reverse=!reverse" align= "center"> Duration</a></th>
+    <th align= "center"><a href="#/jobs" ng-click = "order='read';reverse=!reverse" align= "center"> Shuffle Read</a></th>
+    <th align= "center"><a href="#/jobs" ng-click = "order='write';reverse=!reverse" align= "center"> Shuffle Write</a></th>
+     <th> <a href="#/jobs" ng-click = "order='';reverse=!reverse" align= "center">Errors </a></th>
+    </thead>
+      <tr ng-repeat = "stage in getonly(stage,id) | filter:query | orderBy : order:!reverse">
+      <td align= "center" align= "center" align= "center" align= "center">{{stage.stageid}}</td>
+     <td align= "center" align= "center" align= "center">{{stage.name}}</td>
+     <td align= "center" align= "center">{{stage.numTasks}}</td>
+     <td  align= "center"  width="110px">
+<div class="progress progress-info progress-striped" style="text-align:center">
+  <div class="bar"  style="width: {{getval(stage.completedTasks,stage.numTasks)}}; color:black; ">{{stage.completedTasks}}/{{stage.numTasks}}</div> 
+</div></td>
+     <td align= "center" align= "center" align= "center">{{timeconv(stage.submissiontime)}}</td>
+      <td align= "center" align= "center"> {{gettimediff(stage.completiontime,stage.submissiontime)}}</td>
+      <td align= "center">{{stage.shuffleRead}}</td>
+      <td align= "center">{{stage.shuffleWrite}}</td>
+      <td></td>
+
+
+     </tr>
+
+          
+           </table>
+
+           <b>Performance :</b> 
+           <legend></legend>
+          <ul>
+        <li  ng-repeat="stage in checkshuffleoveronly(activestages,id) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} is consuming <b>{{stage.shuffleWrite}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li  ng-repeat="stage in checkshuffleoveronly(completedstages,id) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} is consuming <b>{{stage.shuffleWrite}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li  ng-repeat="stage in checkshuffleoveronly(failedstages,id) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} is consuming <b>{{stage.shuffleWrite}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        </ul>
+        <ul>
+        <li  ng-repeat="stage in timeoveronly(activestages,id) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} has been running for <b>{{gettimediff(stage.completiontime,stage.submissiontime)}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li  ng-repeat="stage in timeoveronly(completedstages,id) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} has been running for <b>{{gettimediff(stage.completiontime,stage.submissiontime)}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li  ng-repeat="stage in timeoveronly(failedstages,id) | filter:query">
+          <b>Stage : {{stage.stageid}} : </b> {{stage.name}} has been running for <b>{{gettimediff(stage.completiontime,stage.submissiontime)}}</b> in <b>Query : {{stage.jobid}} :</b> <span ng-click ="updateid(stage.jobid)"><a href="#/jobs">{{stage.description}}</a></span>
+        </li>
+        <li ng-repeat = "rdd in checkrddonly(storageInfo,failedstagesnew,id)| filter:query">
+            <b>RDD :</b> <a href="#/storage">{{rdd.name}}</a> is not cached completely.
+          
+        </li>
+         <li ng-repeat = "rdd in checkrddonly(storageInfo,activestagesnew,id)| filter:query">
+            <b>RDD :</b> <a href="#/storage">{{rdd.name}}</a> is not cached completely.
+          
+        </li>
+         <li ng-repeat = "rdd in checkrddonly(storageInfo,completedstagesnew,id)| filter:query">
+             <b>RDD :</b> <a href="#/storage">{{rdd.name}}</a> is not cached completely.
+          
+        </li>
+        </ul>
+       
+      
+    </div>
+    
+    
+  </div>
+</div>
+</div>
+</body>

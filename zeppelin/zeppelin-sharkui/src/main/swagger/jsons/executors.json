@@ -1,0 +1,34 @@
+{
+  "memUsed":"0.0 B",
+  "maxMem":"345.0 MB",
+  "diskUsed":"0.0 B",
+  "execInfo":[{
+    "execId":"0",
+    "hostPort":"192.150.23.230:60071",
+    "rddBlocks":"0",
+    "memUsed":0,
+    "maxMem":180879360,
+    "diskUsed":0,
+    "activeTasks":"0",
+    "failedTasks":"0",
+    "completedTasks":"14",
+    "totalTasks":"14",
+    "totalDuration":8461,
+    "totalShuffleRead":0,
+    "totalShuffleWrite":15511
+  },{
+    "execId":"<driver>",
+    "hostPort":"192.150.23.230:60050",
+    "rddBlocks":"0",
+    "memUsed":0,
+    "maxMem":180879360,
+    "diskUsed":0,
+    "activeTasks":"0",
+    "failedTasks":"0",
+    "completedTasks":"0",
+    "totalTasks":"0",
+    "totalDuration":0,
+    "totalShuffleRead":0,
+    "totalShuffleWrite":0
+  }]
+}
